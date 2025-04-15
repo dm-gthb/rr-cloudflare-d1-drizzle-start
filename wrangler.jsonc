@@ -12,7 +12,16 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "d1-drizzle-start",
+      "database_id": "028e4491-40d1-4077-bdd8-7417cad762e5",
+      "migrations_dir": "./drizzle/migrations",
+    },
+  ],
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
