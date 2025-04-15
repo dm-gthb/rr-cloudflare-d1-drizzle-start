@@ -1,36 +1,53 @@
-# Welcome to React Router!
+A fullstack template built with React Router 7 Framework mode, Cloudflare Workers, Cloudflare D1, and Drizzle ORM.
 
-A modern, production-ready template for building full-stack React applications using React Router.
+# Database
+D1 has fully-featured support for local development, with SQLite file in `.wrangler/state/v3/d1`.
 
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
+## Migrations
+Generate migration
+```sh
+npm run db:generate
 ```
 
-### Development
+Run migration:
+```sh
+npm run db:migrate
+```
+
+Run production migration
+```sh
+npm run db:migrate-production
+```
+
+## Seeding
+Prepare seeding in `drizzle/seed.sql`.
+
+Run seeding:
+```sh
+npm run db:seed <db-name>
+```
+
+## Drizzle Kit Studio
+drizzle-kit studio command spins up a server for Drizzle Studio hosted on local.drizzle.studio. It requires you to specify database connection credentials via `drizzle.config.ts` config file.
+```sh
+npx drizzle-kit studio
+```
+
+## Drop
+Drop local db:
+```sh
+npm run db:drop
+```
+
+# General
+
+## Development
 
 Start the development server with HMR:
 
 ```bash
 npm run dev
 ```
-
-Your application will be available at `http://localhost:5173`.
 
 ## Previewing the Production Build
 
@@ -52,6 +69,12 @@ npm run build
 
 Deployment is done using the Wrangler CLI.
 
+Be sure to update the `wrangler.jsonc` file with the correct database name and id.
+You will also need to update the `drizzle.config.ts`, and then run the production migration:
+```sh
+npm run db:migrate-production
+```
+
 To build and deploy directly to production:
 
 ```sh
@@ -69,11 +92,3 @@ You can then promote a version to production after verification or roll it out p
 ```sh
 npx wrangler versions deploy
 ```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
